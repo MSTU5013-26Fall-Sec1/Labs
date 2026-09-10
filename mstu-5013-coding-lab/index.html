@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MSTU 5013 lab session: an approachable introduction to coding, GitHub, Codex, and learning by making.">
+  <title>MSTU 5013 · Coding Lab - sec 01</title>
+  <style>
+    /* The page */
+    body {
+      margin: 0;
+      background: #121212;
+      color: #eeeeee;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Links and headings */
+    a { color: #eeeeee; }
+    h1 { font-size: 72px; line-height: 1; }
+    h2 { font-size: 42px; }
+    h3 { font-size: 24px; }
+    p { color: #bbbbbb; }
+
+    /* Keep content centered */
+    .shell {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Navigation uses Flexbox */
+    nav {
+      padding: 20px 0;
+      background: #1c1c1c;
+    }
+    .nav-inner, .nav-links, .button-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* The hero uses a two-column Grid */
+    .hero {
+      min-height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .accent { color: #aaaaaa; }
+
+    /* Buttons */
+    .button {
+      padding: 12px 18px;
+      border: 1px solid #eeeeee;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .primary {
+      background: #eeeeee;
+      color: #121212;
+    }
+
+    /* A reusable card style */
+    .terminal, article, .closing {
+      padding: 30px;
+      background: #222222;
+      border: 1px solid #444444;
+      border-radius: 12px;
+    }
+
+    /* Space between page sections */
+    section {
+      padding: 80px 0;
+      border-top: 1px solid #444444;
+    }
+    .section-head { margin-bottom: 40px; }
+    .section-num { color: #999999; }
+
+    /* Card collections use CSS Grid */
+    .concept-grid, .tools-wrap, .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .tools-wrap, .tips-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Instructor section */
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .portrait-wrap { margin: 0; }
+    .portrait-wrap img {
+      width: 100%;
+      border-radius: 12px;
+      filter: grayscale(40%);
+    }
+
+    /* Footer */
+    .closing, footer {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* On small screens, show one column */
+    @media (max-width: 700px) {
+      h1 { font-size: 48px; }
+      .nav-links { display: none; }
+      .hero, .instructor-grid,
+      .concept-grid, .tools-wrap, .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="MSTU 5013 home"><span class="brand-mark">5013</span> Learning Lab</a>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#instructor">Instructor</a>
+        <a href="#coding">Coding</a>
+        <a href="#tools">Tools</a>
+        <a href="#tips">Learning tips</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="shell hero">
+      <div>
+        <div class="eyebrow">Teachers College · Lab Session</div>
+        <h1>Learn by<br><span class="accent">making.</span></h1>
+        <p class="hero-copy">A friendly introduction to coding as a creative practice—and to the tools that help us build, share, and learn together.</p>
+        <div class="button-row">
+          <a class="button primary" href="#coding">Start exploring <span aria-hidden="true">↓</span></a>
+          <a class="button" href="#tools">Know the tools</a>
+        </div>
+      </div>
+      <div class="terminal" aria-label="A sample coding conversation">
+        <div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="terminal-body">
+          <p><span class="comment">// today's learning loop</span></p>
+          <p><span class="prompt">const</span> idea = "make learning visible";</p>
+          <p><span class="prompt">while</span> (curious) {<br>&nbsp;&nbsp;trySomething();<br>&nbsp;&nbsp;noticeWhatHappens();<br>&nbsp;&nbsp;shareAndImprove();<br>}</p>
+          <p><span class="prompt">›</span> Ready to begin<span class="cursor"></span></p>
+        </div>
+      </div>
+    </header>
+
+    <section id="instructor">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-num">01 / INSTRUCTOR</div>
+          <div><h2>Meet your guide for the lab.</h2><p class="section-intro">Bringing an education technology perspective to a hands-on exploration of coding, collaboration, and AI-supported making.</p></div>
+        </div>
+        <div class="instructor-grid">
+          <figure class="portrait-wrap reveal">
+            <img src="daoquan-li.png" alt="Portrait of Daoquan Li" width="500" height="375">
+            <figcaption class="portrait-credit">Portrait: <a href="https://www.tc.columbia.edu/faculty/dl2331/" target="_blank" rel="noopener noreferrer">Teachers College faculty profile</a></figcaption>
+          </figure>
+          <div class="instructor-copy reveal">
+            <div class="instructor-title">Course instructor</div>
+            <h3>Daoquan Li</h3>
+            <p>Daoquan Li is an Adjunct Assistant Professor at Teachers College, Columbia University, affiliated with the Department of Mathematics, Science &amp; Technology. His faculty expertise is in Education Technology.</p>
+            <p>In this lab, he invites learners to treat coding as an approachable creative practice: start with a real idea, make a small version, and improve it through reflection and experimentation.</p>
+            <div class="profile-facts"><span>Education Technology</span><span>Mathematics, Science &amp; Technology</span></div>
+            <a class="button primary" href="https://www.tc.columbia.edu/faculty/dl2331/" target="_blank" rel="noopener noreferrer">View official profile <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coding">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-num">02 / CODING</div>
+          <div><h2>Coding is a way to think out loud.</h2><p class="section-intro">Code is a set of instructions for a computer—but learning to code is also learning to break big ideas into small, testable steps.</p></div>
+        </div>
+        <div class="concept-grid">
+          <article class="concept-card reveal"><div class="card-icon">{ }</div><h3>Express an idea</h3><p>Turn a question, process, or creative spark into something others can see, use, and respond to.</p></article>
+          <article class="concept-card reveal"><div class="card-icon">→</div><h3>Give instructions</h3><p>Computers are literal collaborators. Clear inputs, sequences, and rules help transform intent into action.</p></article>
+          <article class="concept-card reveal"><div class="card-icon">↻</div><h3>Learn through iteration</h3><p>Run it, observe it, change it. Errors are information—not a verdict on your ability.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-num">03 / TOOLKIT</div>
+          <div><h2>Two tools. One creative workflow.</h2><p class="section-intro">Use GitHub to keep a trustworthy history of your work, and Codex to help you understand, build, debug, and iterate.</p></div>
+        </div>
+        <div class="tools-wrap reveal">
+          <article class="tool-card">
+            <div class="tool-label"><span class="tool-name">GitHub</span><span class="tool-badge">Remember</span></div>
+            <h3>Your project’s shared memory.</h3>
+            <p>GitHub stores code, tracks every change, and makes collaboration legible. Think of it as version history built for making together.</p>
+            <div class="tool-list"><span>commit</span><span>branch</span><span>pull request</span><span>collaborate</span></div>
+          </article>
+          <article class="tool-card">
+            <div class="tool-label"><span class="tool-name">Codex</span><span class="tool-badge">Collaborate</span></div>
+            <h3>A partner inside your project.</h3>
+            <p>Ask Codex to explain unfamiliar code, sketch an approach, implement a feature, or help investigate why something is not working.</p>
+            <div class="tool-list"><span>ask</span><span>explain</span><span>build</span><span>debug</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-num">04 / PRACTICE</div>
+          <div><h2>Small habits make capable coders.</h2><p class="section-intro">You do not need to memorize everything. Build a practice that helps you stay curious, test your understanding, and keep moving.</p></div>
+        </div>
+        <div class="tips-grid">
+          <article class="tip-card reveal"><div class="tip-num">01</div><div><h3>Make the next step smaller</h3><p>If you feel stuck, shrink the task until you can try something in five minutes.</p></div></article>
+          <article class="tip-card reveal"><div class="tip-num">02</div><div><h3>Read errors with curiosity</h3><p>Start with the first error. Find the file and line, then translate the message into plain language.</p></div></article>
+          <article class="tip-card reveal"><div class="tip-num">03</div><div><h3>Predict before you run</h3><p>Say what you expect the code to do. The gap between prediction and result is where learning happens.</p></div></article>
+          <article class="tip-card reveal"><div class="tip-num">04</div><div><h3>Ask for explanations</h3><p>When AI suggests code, ask why it works, what could fail, and how you might test it.</p></div></article>
+          <article class="tip-card reveal"><div class="tip-num">05</div><div><h3>Save working checkpoints</h3><p>Commit small, meaningful changes so experimentation feels safe and your progress stays visible.</p></div></article>
+          <article class="tip-card reveal"><div class="tip-num">06</div><div><h3>Teach it to someone</h3><p>Explaining a concept reveals what you understand—and which question to ask next.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell closing reveal">
+      <div><div class="mono">Your first assignment</div><h2>Change one thing. See what happens.</h2></div>
+      <a class="button" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </main>
+
+  <footer class="shell"><span>MSTU 5013 · Teachers College</span><span class="mono">Build · Reflect · Share</span></footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
