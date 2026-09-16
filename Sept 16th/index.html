@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple daily checklist for keeping track of tasks."
+    />
+    <title>Day by Day Checklist</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">My daily plan</p>
+          <h1>Day by Day</h1>
+          <p class="subtitle">Choose a date and make a manageable list.</p>
+        </div>
+
+        <label class="date-control" for="selected-date">
+          <span>Date</span>
+          <input id="selected-date" type="date" />
+        </label>
+      </header>
+
+      <section class="checklist-card" aria-labelledby="list-heading">
+        <div class="list-header">
+          <div>
+            <h2 id="list-heading">Today’s checklist</h2>
+            <p id="task-summary" aria-live="polite">0 tasks</p>
+          </div>
+          <button id="clear-completed" class="text-button" type="button">
+            Clear completed
+          </button>
+        </div>
+
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="task-input">New checklist item</label>
+          <input
+            id="task-input"
+            type="text"
+            maxlength="100"
+            placeholder="What needs to get done?"
+            autocomplete="off"
+            required
+          />
+          <button class="primary-button" type="submit">Add task</button>
+        </form>
+
+        <p id="form-error" class="form-error" role="alert"></p>
+
+        <ul id="task-list" class="task-list" aria-label="Checklist items"></ul>
+
+        <div id="empty-state" class="empty-state">
+          <span aria-hidden="true">✓</span>
+          <h3>Nothing planned yet</h3>
+          <p>Add your first task for this day.</p>
+        </div>
+      </section>
+
+      <p class="storage-note">Your checklist is saved in this browser.</p>
+    </main>
+
+    <template id="task-template">
+      <li class="task-item">
+        <label class="task-check">
+          <input class="task-checkbox" type="checkbox" />
+          <span class="custom-checkbox" aria-hidden="true"></span>
+          <span class="task-text"></span>
+        </label>
+
+        <div class="task-actions">
+          <button class="icon-button edit-button" type="button">Edit</button>
+          <button class="icon-button delete-button" type="button">Delete</button>
+        </div>
+      </li>
+    </template>
+  </body>
+</html>
