@@ -1,0 +1,36 @@
+body {
+  background-color: #f4f6f8;
+  color: #253247;
+}
+
+main {
+  max-width: 1000px;
+}
+
+.room {
+  background-color: #e3e8ef;
+  border: 2px solid #c4cedb;
+  border-radius: 16px;
+}
+
+/* A circle represents a bulb. No image files are needed. */
+.bulb {
+  width: 96px;
+  height: 96px;
+  border: 3px solid #64748b;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  cursor: pointer;
+}
+
+/* JavaScript adds this class when the bulb's state is on. */
+.bulb.is-on {
+  background-color: #ffe066;
+  border-color: #946500;
+  box-shadow: 0 0 24px #ffe066;
+}
+
+button:focus-visible {
+  outline: 3px solid #1456b8;
+  outline-offset: 5px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Light Switches</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container py-5">
+    <header class="mb-4">
+      <p class="text-uppercase text-secondary fw-bold small">A simple state and rendering demo</p>
+      <h1 class="display-5 fw-bold">Room light switches</h1>
+      <p class="lead">Click a bulb or its switch to change its state. The house switch controls all three bulbs.</p>
+    </header>
+
+    <section class="card p-4 mb-4" aria-labelledby="house-title">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+          <h2 id="house-title" class="h4">House switch</h2>
+          <p id="room-summary" class="mb-0" role="status">0 of 3 lights are on. All lights are off.</p>
+        </div>
+        <button id="house-switch" class="btn btn-primary" type="button">Turn all on</button>
+      </div>
+    </section>
+
+    <section class="room p-4" aria-labelledby="room-title">
+      <h2 id="room-title" class="h4 mb-4">The room</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <article class="card text-center h-100 p-4">
+            <h3 class="h5">Light 1</h3>
+            <button id="bulb-1" class="bulb mx-auto my-4" type="button" aria-label="Toggle light 1" aria-pressed="false"></button>
+            <button id="switch-1" class="btn btn-outline-secondary" type="button" aria-label="Light 1 switch" aria-pressed="false">Off</button>
+          </article>
+        </div>
+        <div class="col-12 col-md-4">
+          <article class="card text-center h-100 p-4">
+            <h3 class="h5">Light 2</h3>
+            <button id="bulb-2" class="bulb mx-auto my-4" type="button" aria-label="Toggle light 2" aria-pressed="false"></button>
+            <button id="switch-2" class="btn btn-outline-secondary" type="button" aria-label="Light 2 switch" aria-pressed="false">Off</button>
+          </article>
+        </div>
+        <div class="col-12 col-md-4">
+          <article class="card text-center h-100 p-4">
+            <h3 class="h5">Light 3</h3>
+            <button id="bulb-3" class="bulb mx-auto my-4" type="button" aria-label="Toggle light 3" aria-pressed="false"></button>
+            <button id="switch-3" class="btn btn-outline-secondary" type="button" aria-label="Light 3 switch" aria-pressed="false">Off</button>
+          </article>
+        </div>
+      </div>
+    </section>
+    <p class="text-secondary mt-4">Each light stores a true (on) or false (off) value. Changing a value calls a function that updates what you see.</p>
+  </main>
+</body>
+</html>
