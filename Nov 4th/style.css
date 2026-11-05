@@ -1,0 +1,31 @@
+/* Bootstrap handles layout and components. These rules add a little personality. */
+:root {
+  --ink: #173c36;
+  --accent: #146c54;
+}
+
+body {
+  background: #f5f7f5;
+  color: var(--ink);
+}
+
+.brand { color: var(--ink); font-weight: 800; letter-spacing: .12em; }
+.eyebrow { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .16em; }
+.btn-primary {
+  --bs-btn-bg: #146c54;
+  --bs-btn-border-color: #146c54;
+  --bs-btn-hover-bg: #0e513f;
+  --bs-btn-hover-border-color: #0e513f;
+  --bs-btn-active-bg: #0e513f;
+  --bs-btn-active-border-color: #0e513f;
+}
+.form-check-input:checked { background-color: var(--accent); border-color: var(--accent); }
+a { color: var(--accent); }
+.car-card { border: 1px solid #dce4de; border-radius: .9rem; overflow: hidden; }
+.car-banner { padding: 1.5rem; background: #e1eae4; min-height: 100px; }
+.car-brand { font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .06em; overflow-wrap: anywhere; }
+.car-year { margin-left: 1rem; font-variant-numeric: tabular-nums; }
+.car-title, .car-color { overflow-wrap: anywhere; }
+.back-to-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1000; }
+/* Give the scroll event room to work, even on tall classroom displays. */
+main { min-height: 115vh; }

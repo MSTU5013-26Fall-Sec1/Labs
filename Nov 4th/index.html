@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Inventory · JavaScript Event Lab</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="border-bottom bg-white">
+    <div class="container py-3 d-flex justify-content-between align-items-center gap-3">
+      <a class="brand text-decoration-none" href="#main">CAR / LAB</a>
+      <span class="small text-secondary">HTML + CSS + JavaScript</span>
+    </div>
+  </header>
+
+  <main id="main" class="container py-5">
+    <div class="row align-items-end g-4 mb-4">
+      <div class="col-md-8">
+        <p class="eyebrow">THE JAVASCRIPT EVENT LAB</p>
+        <h1 class="display-5 fw-bold">Your inventory. In motion.</h1>
+        <p class="text-secondary mb-0">Add a car, explore the inventory, and see JavaScript events in action.</p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <button id="newCarButton" class="btn btn-primary btn-lg" type="button">+ New car</button>
+      </div>
+    </div>
+
+    <section aria-labelledby="inventoryHeading">
+      <div class="d-flex align-items-baseline gap-2 mb-3">
+        <h2 id="inventoryHeading" class="h4 mb-0">Current inventory</h2>
+        <span id="inventoryCount" class="text-secondary small" role="status"></span>
+      </div>
+      <div class="row align-items-end g-3 mb-4">
+        <div class="col-sm-8 col-lg-6">
+          <label for="searchInput" class="form-label small">Search by brand or model</label>
+          <input id="searchInput" type="search" class="form-control" placeholder="Try Toyota…" aria-describedby="searchHint">
+          <div id="searchHint" class="form-text">Type to search. Press Escape here to clear.</div>
+        </div>
+        <div class="col-sm-4 col-lg-6 pb-sm-4">
+          <div class="form-check">
+            <input id="saleFilter" class="form-check-input" type="checkbox">
+            <label for="saleFilter" class="form-check-label">On sale only</label>
+          </div>
+        </div>
+      </div>
+      <div id="carList" class="row g-4"></div>
+      <p id="emptyMessage" class="text-secondary py-4" hidden>No cars match. Try another search or turn off the sale filter.</p>
+    </section>
+
+    <footer class="small text-secondary mt-4">Classroom prototype · Data resets on refresh · Built with <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap 5.3</a></footer>
+  </main>
+
+  <!-- One reusable Bootstrap card. JavaScript fills it with each car's data. -->
+  <template id="carTemplate">
+    <div class="col-md-6 col-lg-4">
+      <article class="card h-100 car-card">
+        <div class="car-banner d-flex justify-content-between align-items-center">
+          <span class="car-brand"></span>
+          <span class="car-year"></span>
+        </div>
+        <div class="card-body p-4">
+          <span class="car-sale badge mb-3"></span>
+          <h3 class="car-title h5"></h3>
+          <dl class="row small mb-0 mt-3">
+            <dt class="col-5 text-secondary fw-normal">Mileage</dt>
+            <dd class="car-mileage col-7 text-end"></dd>
+            <dt class="col-5 text-secondary fw-normal">Color</dt>
+            <dd class="car-color col-7 text-end mb-0"></dd>
+            <dt class="col-5 text-secondary fw-normal">Price</dt>
+            <dd class="car-price col-7 text-end mb-0"></dd>
+          </dl>
+          <button class="btn btn-outline-secondary btn-sm mt-4 edit-car" type="button">Edit car</button>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <!-- Bootstrap handles the modal backdrop, focus trap, and Escape-to-close. -->
+  <div id="carModal" class="modal fade" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle" class="modal-title fs-5">Add a new car</h2>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="carForm">
+          <div class="modal-body">
+            <p class="small text-secondary">Fill in the details, then save your car.</p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="brand" class="form-label">Brand</label>
+                <input id="brand" class="form-control" placeholder="Toyota" maxlength="40" pattern=".*\S.*" title="Enter at least one non-space character." required>
+              </div>
+              <div class="col-sm-6">
+                <label for="model" class="form-label">Model</label>
+                <input id="model" class="form-control" placeholder="Corolla" maxlength="40" pattern=".*\S.*" title="Enter at least one non-space character." required>
+              </div>
+              <div class="col-sm-6">
+                <label for="year" class="form-label">Year</label>
+                <input id="year" class="form-control" type="number" min="1886" max="2100" placeholder="2024" required>
+              </div>
+              <div class="col-sm-6">
+                <label for="price" class="form-label">Price</label>
+                <input id="price" class="form-control" type="number" min="2000" max="1000000" step="1000" placeholder="10000" required>
+              </div>
+              <div class="col-12">
+                <label for="mileage" class="form-label">Mileage: <output id="mileageValue" for="mileage">0</output> miles</label>
+                <input id="mileage" class="form-range" type="range" min="0" max="300000" step="100" value="0" aria-describedby="mileageHint">
+                <div id="mileageHint" class="form-text">Drag the slider or scroll over it. Scroll up to add 100 miles; down to subtract 100. You can also use the arrow keys.</div>
+              </div>
+              <div class="col-12">
+                <label for="color" class="form-label">Color</label>
+                <input id="color" class="form-control" placeholder="Silver" maxlength="30" pattern=".*\S.*" title="Enter at least one non-space character." required>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input id="isOnsale" class="form-check-input" type="checkbox">
+                  <label for="isOnsale" class="form-check-label">This car is on sale</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="submit">Save car</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <button id="backToTop" class="btn btn-dark back-to-top" type="button" hidden>↑ Back to top</button>
+
+  <!-- Load Bootstrap before our script so bootstrap.Modal is available. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
