@@ -1,0 +1,41 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  background: #f3f6fb;
+  color: #1e293b;
+}
+
+.todo-app {
+  max-width: 640px;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 36px rgb(30 41 59 / 6%);
+}
+
+.eyebrow {
+  color: #4964a4;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.btn-primary {
+  --bs-btn-bg: #405bd6;
+  --bs-btn-border-color: #405bd6;
+  --bs-btn-hover-bg: #3249b4;
+  --bs-btn-hover-border-color: #3249b4;
+  --bs-btn-active-bg: #293e9d;
+  --bs-btn-active-border-color: #293e9d;
+}
+
+.list-group-item {
+  padding: 1rem 0;
+  color: inherit;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
