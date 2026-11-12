@@ -15,7 +15,9 @@
       <h1 id="app-title" class="fw-bold mb-2">My to-do list</h1>
       <p class="text-secondary mb-4">A little space for what comes next.</p>
 
-      <button id="create-button" class="btn btn-primary" type="button" aria-controls="task-form" aria-expanded="false">+ Create</button>
+      <button id="create-button" class="btn btn-info" type="button" aria-controls="task-form" aria-expanded="false">+ Create</button>
+      <button id="hide-button" class="btn btn-warning" type="button" aria-controls="task-form" aria-expanded="false">- Hide</button>
+      <div id="realTimeContent"></div>
 
       <!-- A form submits when the user presses Enter or clicks Save. -->
       <form id="task-form" class="mt-4" hidden>
@@ -25,6 +27,7 @@
           <button class="btn btn-primary" type="submit">Save</button>
         </div>
       </form>
+      <h2 hidden>Hidden Content</h2>
 
       <div class="mt-4 pt-3 border-top">
         <h2 class="h6 fw-semibold mb-3">Tasks</h2>
