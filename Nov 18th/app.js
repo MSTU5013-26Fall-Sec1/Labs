@@ -4,55 +4,55 @@ const Contacts = [
   {
     id: 1, firstName: "Maya", lastName: "Chen", phone: "(212) 555-0101",
     email: "maya.chen@example.com", tags: ["Friend", "Design"], gender: "Female",
-    pic: "maya", note: "Ask Maya about the Saturday sketch club.",
+    pic: "portraits/maya.jpg", note: "Ask Maya about the Saturday sketch club.",
     isSecrete: false, isNoteVisible: false,
   },
   {
     id: 2, firstName: "Jordan", lastName: "Brooks", phone: "(646) 555-0102",
     email: "jordan.brooks@example.com", tags: ["Work", "Photography"], gender: "Male",
-    pic: "jordan", note: "Surprise birthday plans are set for next Friday.",
+    pic: "portraits/jordan.jpg", note: "Surprise birthday plans are set for next Friday.",
     isSecrete: true, isNoteVisible: false,
   },
   {
     id: 3, firstName: "Sam", lastName: "Patel", phone: "(917) 555-0103",
     email: "sam.patel@example.com", tags: ["Friend", "Book Club"], gender: "Female",
-    pic: "sam", note: "Bring the short story collection to book club.",
+    pic: "portraits/sam.jpg", note: "Bring the short story collection to book club.",
     isSecrete: false, isNoteVisible: false,
   },
   {
     id: 4, firstName: "Amara", lastName: "Reed", phone: "(718) 555-0104",
     email: "amara.reed@example.com", tags: ["Family", "Travel"], gender: "Female",
-    pic: "amara", note: "Save a copy of our old family photos for Amara.",
+    pic: "portraits/amara.jpg", note: "Save a copy of our old family photos for Amara.",
     isSecrete: true, isNoteVisible: false,
   },
   {
     id: 5, firstName: "Leo", lastName: "Rivera", phone: "(347) 555-0105",
     email: "leo.rivera@example.com", tags: ["Work", "Music"], gender: "Male",
-    pic: "leo", note: "Leo plays bass at the Friday open mic.",
+    pic: "portraits/leo.jpg", note: "Leo plays bass at the Friday open mic.",
     isSecrete: false, isNoteVisible: false,
   },
   {
     id: 6, firstName: "Riley", lastName: "Morgan", phone: "(929) 555-0106",
     email: "riley.morgan@example.com", tags: ["Friend", "Outdoors"], gender: "Female",
-    pic: "riley", note: "Riley is planning a surprise cabin trip for the group.",
+    pic: "portraits/riley.jpg", note: "Riley is planning a surprise cabin trip for the group.",
     isSecrete: true, isNoteVisible: false,
   },
   {
     id: 7, firstName: "Lina", lastName: "Haddad", phone: "(212) 555-0107",
     email: "lina.haddad@example.com", tags: ["Neighbor", "Gardening"], gender: "Female",
-    pic: "lina", note: "Swap herb seedlings when the weather warms up.",
+    pic: "portraits/lina.jpg", note: "Swap herb seedlings when the weather warms up.",
     isSecrete: false, isNoteVisible: false,
   },
   {
     id: 8, firstName: "Evan", lastName: "Park", phone: "(646) 555-0108",
     email: "evan.park@example.com", tags: ["Classmate", "Cooking"], gender: "Male",
-    pic: "evan", note: "Pick up the cookbook Evan mentioned as a gift.",
+    pic: "portraits/evan.jpg", note: "Pick up the cookbook Evan mentioned as a gift.",
     isSecrete: true, isNoteVisible: false,
   },
   {
     id: 9, firstName: "Avery", lastName: "James", phone: "(917) 555-0109",
     email: "avery.james@example.com", tags: ["Friend", "Coffee"], gender: "Male",
-    pic: "avery", note: "Try the new café near the library together.",
+    pic: "portraits/avery.jpg", note: "Try the new café near the library together.",
     isSecrete: false, isNoteVisible: false,
   },
 ];
@@ -63,9 +63,6 @@ const grid = document.querySelector("#contact-grid");
 const resultCount = document.querySelector("#result-count");
 const emptyState = document.querySelector("#empty-state");
 const template = document.querySelector("#contact-template");
-
-// Portraits are stored in the page so previews can load them directly.
-const portraits = JSON.parse(document.querySelector("#portrait-data").textContent);
 
 function getVisibleContacts() {
   const query = search.value.trim().toLowerCase();
@@ -99,7 +96,7 @@ function updateNote(card, contact) {
 
 function createContactCard(contact) {
   const card = template.content.firstElementChild.cloneNode(true);
-  card.querySelector(".contact-photo").src = portraits[contact.pic];
+  card.querySelector(".contact-photo").src = contact.pic;
   card.querySelector(".contact-name").textContent = `${contact.firstName} ${contact.lastName}`;
   card.querySelector(".contact-gender").textContent = contact.gender;
 

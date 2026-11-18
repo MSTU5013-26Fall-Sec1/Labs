@@ -85,7 +85,6 @@ main.directory { padding-bottom: 48px; }
 
 .contact-card .card-body { padding: 18px; }
 .contact-header { display: flex; align-items: center; gap: 13px; margin-bottom: 15px; }
-.contact-photo { flex: none; border-radius: 13px; object-fit: cover; background: var(--accent-soft); }
 .contact-name { margin: 0 0 3px; font-size: 1.19rem; font-weight: 700; }
 .contact-gender { margin: 0; color: var(--muted); font-size: 0.875rem; }
 
